@@ -1,34 +1,27 @@
-package com.unifranz.programaciontres.application.service.Impl;
+package com.unifranz.programaciontres.application.service.impl;
 
 import com.unifranz.programaciontres.application.service.EventoService;
 import org.springframework.stereotype.Service;
-
 import java.util.HashMap;
 import java.util.Map;
 
 @Service
 public class EventoServiceImpl implements EventoService {
 
+    // ... aquí mantienes tu otro método validarAcceso ...
+
     @Override
-    public Map<String, Object> validarAcceso (int edad, boolean pago){
-        boolean puedeEntrar;
-        String motivo;
+    public Map<String, Object> conversionBs(double dolares) {
+        Map<String, Object> respuesta = new HashMap<>();
 
-        if (edad < 18){
-            puedeEntrar = false;
-            motivo = "es menor de edad";
-        } else if (!pago) {
-           puedeEntrar = false;
-           motivo = "No Pago";
-        } else {
-            puedeEntrar = true;
-            motivo=" si esta permitido";
-        }
-        Map<String, Object> salida = new HashMap<>();
-        salida.put("puedeEntrar", puedeEntrar);
-        salida.put("motivo", motivo);
+        // Tipo de cambio oficial referencial
+        double tipoCambio = 6.96;
+        double bolivianos = dolares * tipoCambio;
 
-        return salida;
+        respuesta.put("dolares_recibidos", dolares);
+        respuesta.put("tasa_cambio", tipoCambio);
+        respuesta.put("total_bolivianos", bolivianos);
+
+        return respuesta;
     }
-
 }
