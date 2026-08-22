@@ -21,5 +21,4 @@ public class Cancion {
     private String titulo;
     private String artista;
     private String genero;
-    private Integer duracionSegundos;
 }

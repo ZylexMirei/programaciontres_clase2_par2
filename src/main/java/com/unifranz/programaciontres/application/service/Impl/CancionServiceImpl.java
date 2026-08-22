@@ -21,7 +21,6 @@ public class CancionServiceImpl implements CancionService {
         cancion.setTitulo(cancionDto.getTitulo());
         cancion.setArtista(cancionDto.getArtista());
         cancion.setGenero(cancionDto.getGenero());
-        cancion.setDuracionSegundos(cancionDto.getDuracionSegundos());
 
         Cancion guardada = cancionRepository.save(cancion);
         return convertirDto(guardada);
@@ -48,8 +47,7 @@ public class CancionServiceImpl implements CancionService {
                 cancion.getId(),
                 cancion.getTitulo(),
                 cancion.getArtista(),
-                cancion.getGenero(),
-                cancion.getDuracionSegundos()
+                cancion.getGenero()
         );
     }
 }
