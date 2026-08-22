@@ -20,7 +20,7 @@ public class EventoServiceImpl implements EventoService {
             respuesta.put("mensaje", "Acceso denegado: debe ser mayor de edad.");
         } else {
             respuesta.put("acceso", false);
-            respuesta.put("mensaje", "Acceso denegado: falta realizar el pago.");
+            respuesta.put("mensaje", "Falta realizar el pago.");
         }
 
         return respuesta;
