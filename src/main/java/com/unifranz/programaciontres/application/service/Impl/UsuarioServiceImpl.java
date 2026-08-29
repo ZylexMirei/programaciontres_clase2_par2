@@ -20,7 +20,12 @@ public class UsuarioServiceImpl implements UsuarioService {
 
     @Override
     public UsuarioDto guardar (UsuarioDto usuarioDto){
-        Usuario usuario = new Usuario();
+        Usuario usuario;
+        if (Boolean.TRUE.equals(usuarioDto.getFlag())) {
+            usuario = new UsuarioAdmin();
+        } else {
+            usuario = new Usuario();
+        }
         usuario.setNombre(usuarioDto.getNombre());
         usuario.setEmail(usuarioDto.getEmail());
         Usuario guardar =   usuarioRepository.save(usuario);
@@ -38,6 +43,22 @@ public class UsuarioServiceImpl implements UsuarioService {
     @Override
     public List<UsuarioDto> listarActivos(){
         return usuarioRepository.listarActivos();
+    }
+
+    @Override
+    public List<UsuarioDto> listarAdmins(){
+        return usuarioRepository.findByRol("ADMIN")
+                .stream()
+                .map(u -> new UsuarioDto(u))
+                .collect(Collectors.toList());
+    }
+
+    @Override
+    public List<UsuarioDto> listarNormales(){
+        return usuarioRepository.findByRol("NORMAL")
+                .stream()
+                .map(u -> new UsuarioDto(u))
+                .collect(Collectors.toList());
     }
 
     @Override

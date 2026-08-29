@@ -22,6 +22,7 @@ public class UsuarioDto {
     private String modificadoPor;
     private Boolean eliminado;
     private  String rol;
+    private Boolean flag;
 
     public UsuarioDto(Usuario usuario) {
         this.id = usuario.getId();

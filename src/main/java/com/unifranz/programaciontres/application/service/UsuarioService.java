@@ -8,5 +8,7 @@ public interface UsuarioService {
     UsuarioDto guardar (UsuarioDto usuarioDto);
     List<UsuarioDto> listar();
     List<UsuarioDto> listarActivos();
+    List<UsuarioDto> listarAdmins();
+    List<UsuarioDto> listarNormales();
     UsuarioDto guardarAdmin (UsuarioDto usuarioDto);
 }

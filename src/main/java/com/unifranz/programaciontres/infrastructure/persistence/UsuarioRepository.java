@@ -10,6 +10,7 @@ import java.util.List;
 public interface UsuarioRepository extends JpaRepository<Usuario, Long> {
 
 
+    List<Usuario> findByRol(String rol);
 
     @Query("SELECT new com.unifranz.programaciontres.application.dto.UsuarioDto(u)"+
             " FROM Usuario u" +
