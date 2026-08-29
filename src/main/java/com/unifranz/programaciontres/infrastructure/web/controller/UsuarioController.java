@@ -25,4 +25,15 @@ public class UsuarioController {
     public ResponseEntity<List<UsuarioDto>> listarUsuarios(){
         return ResponseEntity.ok(usuarioService.listar());
     }
+
+    @GetMapping("/listarUsuarios")
+    public ResponseEntity<List<UsuarioDto>> listarUsuariosActivos(){
+        return ResponseEntity.ok(usuarioService.listarActivos());
+    }
+
+    @PostMapping("/guardarAdmin")
+    public ResponseEntity<UsuarioDto> guardarAdmin (@RequestBody UsuarioDto usuarioDto){
+        UsuarioDto usuario = usuarioService.guardarAdmin(usuarioDto);
+        return ResponseEntity.ok(usuario);
+    }
 }
